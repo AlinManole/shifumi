@@ -1,32 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <title>Game</title>
-</head>
-<body>
-    <h1 class="d-flex justify-content-center">Shi-fu-mi</h1>
-    <div class="d-flex justify-content-center">
-        <div class="flex-column">
-            <img src="https://www.jerome-reaux-creations.fr/DVP/codepen/shifumi/1-pierre.jpg" alt="Rock">
-            <button onClick="rockClick()" class="rounded-pill w-25 px-3">Rock</button>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Shifumi</title>
+  </head>
+  <body>
+    <div class="vertical-wrapper">
+      <header>
+        <div class="container">
+          <div class="score-container">
+            <div>
+              <p>You</p>
+              <h2 id="player-score">0</h2>
+            </div>
+            <div class="round-counter">
+              <p id="round-number">Round 0</p>
+            </div>
+            <div class="computer-score">
+              <p>Computer</p>
+              <h2 id="computer-score">0</h2>
+            </div>
+          </div>
         </div>
-        <div class="flex-column">
-            <img src="https://www.jerome-reaux-creations.fr/DVP/codepen/shifumi/2-feuille.jpg" alt="Paper">
-            <button onClick="paperClick()" class="rounded-pill  w-25 px-3">Paper</button>
-            
+      </header>
+  
+      <div class="container">
+        <div class="match-container">
+          <section class="player">
+            <img id="player-image" src="https://www.handcramp.lol/assets/icons/scissors.svg">
+          </section>
+          <section class="player">
+            <img id="computer-image" src="https://www.handcramp.lol/assets/icons/rock.svg">
+          </section>
         </div>
-        <div  class="flex-column">
-            <img src="https://jerome-reaux-creations.fr/DVP/codepen/shifumi/3-ciseaux.jpg" alt="Scissors">
-            <button onclick="scissorsClick()" class="rounded-pill w-25 px-3">Scissors</button>
+      </div>
+
+      <div class="container">
+        <div class="match-info">
+          <p id="round-info">&nbsp;</p>
+          <div id="winner">&nbsp;</div>
         </div>
-    </div>      
-    
+      </div>
+  
+      <div class="container">
+        <div class="button-container">
+          <button class="control" onclick="onButtonClick('rock')">
+            <img src="https://www.handcramp.lol/assets/icons/rock.svg">
+          </button>
+          <button class="control" onclick="onButtonClick('paper')">
+            <img src="https://www.handcramp.lol/assets/icons/paper.svg">
+          </button>
+          <button class="control" onclick="onButtonClick('scissors')">
+            <img src="https://www.handcramp.lol/assets/icons/scissors.svg">
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="score-history" class="score-history">
+      
+    </div>
 
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
