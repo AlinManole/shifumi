@@ -20,7 +20,7 @@ var array = [
 
 function onButtonClick(choice) {
   var interval = setInterval(shuffleImages, 100)
-
+  
   setTimeout(function() {
     clearInterval(interval)
     populateRound()
@@ -41,104 +41,104 @@ function computerTurn(myChoice) {
     myChoice === "rock" && computerChoice === "scissors" ||
     myChoice === "paper" && computerChoice === "rock" ||
     myChoice === "scissors" && computerChoice === "paper"
-  ) {
-    roundHTML.innerHTML = `${myChoice} gagne`
-    pushInHistory("Player gagne")
-
-    playerScore = playerScore + 1
-
-    if (playerScore === 3) {
-      winnerHTML.innerHTML = `
+    ) {
+      roundHTML.innerHTML = `${myChoice} gagne`
+      pushInHistory("Player gagne")
+      
+      playerScore = playerScore + 1
+      
+      if (playerScore === 3) {
+        winnerHTML.innerHTML = `
         <button class="replay" onclick="reset()">
-          Player a gagné. Voulez vous rejouer ?
+        Player a gagné. Voulez vous rejouer ?
         </button>
-      `
-
-      disableButtons()
-    }
-  } else {
-    roundHTML.innerHTML = `${computerChoice} gagne`
-    pushInHistory("Computer gagne")
-    computerScore = computerScore + 1
-
-    if (computerScore === 3) {
-      winnerHTML.innerHTML = `
+        `
+        
+        disableButtons()
+      }
+    } else {
+      roundHTML.innerHTML = `${computerChoice} gagne`
+      pushInHistory("Computer gagne")
+      computerScore = computerScore + 1
+      
+      if (computerScore === 3) {
+        winnerHTML.innerHTML = `
         <button class="replay" onclick="reset()">
-          Computer a gagné. Voulez vous rejouer ?
+        Computer a gagné. Voulez vous rejouer ?
         </button>
-      `
-
-      disableButtons()
+        `
+        
+        disableButtons()
+      }
     }
   }
-}
-
-function generateComputerChoice() {
-  var array = ["rock", "paper", "scissors"]
-  var min = 0
-  var max = 2
-  var random = Math.floor(Math.random() * (max - min + 1) + min)
-
-  return array[random]
-}
-
-function displayImage(fileName, image) {
-  var src = `https://www.handcramp.lol/assets/icons/${fileName}.svg`
-  image.setAttribute("src", src)
-}
-
-function populateRound() {
-  round = round + 1
-  roundNumber.innerHTML = `Round ${round}`
-}
-
-function displayScore() {
-  playerScoreHTML.innerHTML = playerScore
-  computerScoreHTML.innerHTML = computerScore
-}
-
-function reset() {
-  playerScore = 0
-  playerScoreHTML.innerHTML = playerScore
-
-  computerScore = 0
-  computerScoreHTML.innerHTML = computerScore
-
-  round = 0
-  roundNumber.innerHTML = `Round ${round}`
-
-  roundHTML.innerHTML = `&nbsp;`
-
-  winnerHTML.innerHTML = `&nbsp;`
-
-  container.innerHTML = ""
-  enableButtons()
-}
-
-function disableButtons() {
-  for(var i = 0; i < buttons.length; i++) {
-    buttons[i].setAttribute("disabled", "")
+  
+  function generateComputerChoice() {
+    var array = ["rock", "paper", "scissors"]
+    var min = 0
+    var max = 2
+    var random = Math.floor(Math.random() * (max - min + 1) + min)
+    
+    return array[random]
   }
-}
-
-function enableButtons() {
-  for(var i = 0; i < buttons.length; i++) {
-    buttons[i].removeAttribute("disabled")
+  
+  function displayImage(fileName, image) {
+    var src = `https://www.handcramp.lol/assets/icons/${fileName}.svg`
+    image.setAttribute("src", src)
   }
-}
-
-function pushInHistory(text) {
-  container.innerHTML = container.innerHTML + `<p>${text}</p>`
-}
-
-function shuffleImages() {
-  if(index === 0) {
-    index = 1
-  } else if (index === 1) {
-    index = 2
-  } else {
-    index = 0
+  
+  function populateRound() {
+    round = round + 1
+    roundNumber.innerHTML = `Round ${round}`
   }
-
-  computerImage.setAttribute("src", array[index])
-}
+  
+  function displayScore() {
+    playerScoreHTML.innerHTML = playerScore
+    computerScoreHTML.innerHTML = computerScore
+  }
+  
+  function reset() {
+    playerScore = 0
+    playerScoreHTML.innerHTML = playerScore
+    
+    computerScore = 0
+    computerScoreHTML.innerHTML = computerScore
+    
+    round = 0
+    roundNumber.innerHTML = `Round ${round}`
+    
+    roundHTML.innerHTML = `&nbsp;`
+    
+    winnerHTML.innerHTML = `&nbsp;`
+    
+    container.innerHTML = ""
+    enableButtons()
+  }
+  
+  function disableButtons() {
+    for(var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("disabled", "")
+    }
+  }
+  
+  function enableButtons() {
+    for(var i = 0; i < buttons.length; i++) {
+      buttons[i].removeAttribute("disabled")
+    }
+  }
+  
+  function pushInHistory(text) {
+    container.innerHTML = container.innerHTML + `<p>${text}</p>`
+  }
+  
+  function shuffleImages() {
+    if(index === 0) {
+      index = 1
+    } else if (index === 1) {
+      index = 2
+    } else {
+      index = 0
+    }
+    
+    computerImage.setAttribute("src", array[index])
+  }
